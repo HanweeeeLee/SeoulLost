@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,10 @@
 		78A14617248CBBB5002482BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A14615248CBBB5002482BB /* LaunchScreen.storyboard */; };
 		78A14622248CBBB6002482BB /* SeoulLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A14621248CBBB6002482BB /* SeoulLostTests.swift */; };
 		78A1462D248CBBB6002482BB /* SeoulLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1462C248CBBB6002482BB /* SeoulLostUITests.swift */; };
+		78D3CFF7248CC2CB00822088 /* DataApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFF3248CC2CA00822088 /* DataApiManager.swift */; };
+		78D3CFF9248CCF4200822088 /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFF8248CCF4200822088 /* CommonDefine.swift */; };
+		78D3CFFB248CD0A400822088 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFFA248CD0A400822088 /* APIDefine.swift */; };
+		78D3CFFD248CDD5200822088 /* LostArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFFC248CDD5200822088 /* LostArticleModel.swift */; };
 		85E9D5EDC2D5C84223D36483 /* Pods_SeoulLostTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E0EDDAF37A403306D98CC6 /* Pods_SeoulLostTests.framework */; };
 		9DE09A63CA403C327FB79E5D /* Pods_SeoulLost_SeoulLostUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCAA68613E0707A387DA1C0 /* Pods_SeoulLost_SeoulLostUITests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +60,10 @@
 		78A14628248CBBB6002482BB /* SeoulLostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeoulLostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A1462C248CBBB6002482BB /* SeoulLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulLostUITests.swift; sourceTree = "<group>"; };
 		78A1462E248CBBB6002482BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78D3CFF3248CC2CA00822088 /* DataApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApiManager.swift; sourceTree = "<group>"; };
+		78D3CFF8248CCF4200822088 /* CommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
+		78D3CFFA248CD0A400822088 /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
+		78D3CFFC248CDD5200822088 /* LostArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArticleModel.swift; sourceTree = "<group>"; };
 		C1E0EDDAF37A403306D98CC6 /* Pods_SeoulLostTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeoulLostTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3370D307978F46621E6E49 /* Pods-SeoulLost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeoulLost.debug.xcconfig"; path = "Target Support Files/Pods-SeoulLost/Pods-SeoulLost.debug.xcconfig"; sourceTree = "<group>"; };
 		E1CB560A694A403B24EE75EB /* Pods-SeoulLost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeoulLost.release.xcconfig"; path = "Target Support Files/Pods-SeoulLost/Pods-SeoulLost.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +109,6 @@
 				E58594FD4320B27ECD4C3EE2 /* Pods-SeoulLostTests.debug.xcconfig */,
 				F003F64106D164FAFDBD3F75 /* Pods-SeoulLostTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,6 +137,11 @@
 		78A14609248CBBB1002482BB /* SeoulLost */ = {
 			isa = PBXGroup;
 			children = (
+				78D3CFF6248CC2CA00822088 /* Define */,
+				78D3CFF1248CC2CA00822088 /* Extension */,
+				78D3CFF5248CC2CA00822088 /* Lib */,
+				78D3CFF2248CC2CA00822088 /* Manager */,
+				78D3CFF4248CC2CA00822088 /* Model */,
 				78A1460A248CBBB1002482BB /* AppDelegate.swift */,
 				78A1460C248CBBB1002482BB /* SceneDelegate.swift */,
 				78A1460E248CBBB1002482BB /* ContentView.swift */,
@@ -165,6 +177,45 @@
 				78A1462E248CBBB6002482BB /* Info.plist */,
 			);
 			path = SeoulLostUITests;
+			sourceTree = "<group>";
+		};
+		78D3CFF1248CC2CA00822088 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		78D3CFF2248CC2CA00822088 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				78D3CFF3248CC2CA00822088 /* DataApiManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		78D3CFF4248CC2CA00822088 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78D3CFFC248CDD5200822088 /* LostArticleModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		78D3CFF5248CC2CA00822088 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		78D3CFF6248CC2CA00822088 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				78D3CFF8248CCF4200822088 /* CommonDefine.swift */,
+				78D3CFFA248CD0A400822088 /* APIDefine.swift */,
+			);
+			path = Define;
 			sourceTree = "<group>";
 		};
 		9831605F0E2E0D663B06FE54 /* Frameworks */ = {
@@ -416,8 +467,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78D3CFFD248CDD5200822088 /* LostArticleModel.swift in Sources */,
 				78A1460B248CBBB1002482BB /* AppDelegate.swift in Sources */,
+				78D3CFFB248CD0A400822088 /* APIDefine.swift in Sources */,
 				78A1460D248CBBB1002482BB /* SceneDelegate.swift in Sources */,
+				78D3CFF7248CC2CB00822088 /* DataApiManager.swift in Sources */,
+				78D3CFF9248CCF4200822088 /* CommonDefine.swift in Sources */,
 				78A1460F248CBBB1002482BB /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

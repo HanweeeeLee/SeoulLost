@@ -10,7 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            Text("hello")
+        }
+        .onAppear {
+            print("onAppear")
+//            let apiAddr = APIDefine.getLostArticleAPIAddress(startIndex: 1, endIndex: 5, type: .wallet, place: .bus, searchTxt: "지갑")
+//            print("apiAddr:\(apiAddr)")
+//
+//            DataApiManager.requestGETURL(apiAddr, headers: nil, success: { (result) in
+//                print("result:\(result)")
+//            }) { (err) in
+//                print("error :\(err)")
+//            }
+        }
+        .onDisappear() {
+            print("onDisappear")
+        }
     }
 }
 
