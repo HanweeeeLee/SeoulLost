@@ -1,0 +1,6 @@
+framework module Pods_SeoulLostTests {
+  umbrella header "Pods-SeoulLostTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
