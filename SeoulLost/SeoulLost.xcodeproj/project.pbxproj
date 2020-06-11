@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1FC38864D34762BB3EB44045 /* Pods_SeoulLost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EEA26F2353D4A2BB151299 /* Pods_SeoulLost.framework */; };
+		4F0731E72491F4B400E28CA7 /* LostItemTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0731E62491F4B400E28CA7 /* LostItemTabView.swift */; };
+		4F0731E92491F50700E28CA7 /* SearchTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0731E82491F50700E28CA7 /* SearchTabView.swift */; };
+		4F0731EF2491F68100E28CA7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0731EE2491F68100E28CA7 /* LoadingView.swift */; };
 		78A1460B248CBBB1002482BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1460A248CBBB1002482BB /* AppDelegate.swift */; };
 		78A1460D248CBBB1002482BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1460C248CBBB1002482BB /* SceneDelegate.swift */; };
 		78A1460F248CBBB1002482BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1460E248CBBB1002482BB /* ContentView.swift */; };
@@ -45,6 +48,9 @@
 		1BCAA68613E0707A387DA1C0 /* Pods_SeoulLost_SeoulLostUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeoulLost_SeoulLostUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42EEA26F2353D4A2BB151299 /* Pods_SeoulLost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SeoulLost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48C048B90A42F46B5FDFB7D3 /* Pods-SeoulLost-SeoulLostUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeoulLost-SeoulLostUITests.debug.xcconfig"; path = "Target Support Files/Pods-SeoulLost-SeoulLostUITests/Pods-SeoulLost-SeoulLostUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F0731E62491F4B400E28CA7 /* LostItemTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostItemTabView.swift; sourceTree = "<group>"; };
+		4F0731E82491F50700E28CA7 /* SearchTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTabView.swift; sourceTree = "<group>"; };
+		4F0731EE2491F68100E28CA7 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		6085E8E0223DD25D5508D801 /* Pods-SeoulLost-SeoulLostUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SeoulLost-SeoulLostUITests.release.xcconfig"; path = "Target Support Files/Pods-SeoulLost-SeoulLostUITests/Pods-SeoulLost-SeoulLostUITests.release.xcconfig"; sourceTree = "<group>"; };
 		78A14607248CBBB1002482BB /* SeoulLost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeoulLost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A1460A248CBBB1002482BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,61 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4F0731E02491F02F00E28CA7 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				4F0731E42491F4A200E28CA7 /* LostItemView */,
+				4F0731E32491F4A200E28CA7 /* SearchView */,
+				4F0731E52491F4A200E28CA7 /* YourPageView */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		4F0731E32491F4A200E28CA7 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				4F0731E82491F50700E28CA7 /* SearchTabView.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		4F0731E42491F4A200E28CA7 /* LostItemView */ = {
+			isa = PBXGroup;
+			children = (
+				4F0731E62491F4B400E28CA7 /* LostItemTabView.swift */,
+			);
+			path = LostItemView;
+			sourceTree = "<group>";
+		};
+		4F0731E52491F4A200E28CA7 /* YourPageView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = YourPageView;
+			sourceTree = "<group>";
+		};
+		4F0731EB2491F67200E28CA7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4F0731EE2491F68100E28CA7 /* LoadingView.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4F0731EC2491F67200E28CA7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4F0731ED2491F67200E28CA7 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
 		78A145FE248CBBB1002482BB = {
 			isa = PBXGroup;
 			children = (
@@ -137,9 +198,11 @@
 		78A14609248CBBB1002482BB /* SeoulLost */ = {
 			isa = PBXGroup;
 			children = (
+				4F0731EC2491F67200E28CA7 /* Extension */,
+				4F0731ED2491F67200E28CA7 /* Lib */,
+				4F0731EB2491F67200E28CA7 /* Util */,
+				4F0731E02491F02F00E28CA7 /* Tabs */,
 				78D3CFF6248CC2CA00822088 /* Define */,
-				78D3CFF1248CC2CA00822088 /* Extension */,
-				78D3CFF5248CC2CA00822088 /* Lib */,
 				78D3CFF2248CC2CA00822088 /* Manager */,
 				78D3CFF4248CC2CA00822088 /* Model */,
 				78A1460A248CBBB1002482BB /* AppDelegate.swift */,
@@ -179,13 +242,6 @@
 			path = SeoulLostUITests;
 			sourceTree = "<group>";
 		};
-		78D3CFF1248CC2CA00822088 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		78D3CFF2248CC2CA00822088 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,13 +256,6 @@
 				78D3CFFC248CDD5200822088 /* LostArticleModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		78D3CFF5248CC2CA00822088 /* Lib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Lib;
 			sourceTree = "<group>";
 		};
 		78D3CFF6248CC2CA00822088 /* Define */ = {
@@ -468,12 +517,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				78D3CFFD248CDD5200822088 /* LostArticleModel.swift in Sources */,
+				4F0731E72491F4B400E28CA7 /* LostItemTabView.swift in Sources */,
 				78A1460B248CBBB1002482BB /* AppDelegate.swift in Sources */,
+				4F0731EF2491F68100E28CA7 /* LoadingView.swift in Sources */,
 				78D3CFFB248CD0A400822088 /* APIDefine.swift in Sources */,
 				78A1460D248CBBB1002482BB /* SceneDelegate.swift in Sources */,
 				78D3CFF7248CC2CB00822088 /* DataApiManager.swift in Sources */,
 				78D3CFF9248CCF4200822088 /* CommonDefine.swift in Sources */,
 				78A1460F248CBBB1002482BB /* ContentView.swift in Sources */,
+				4F0731E92491F50700E28CA7 /* SearchTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +692,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"SeoulLost/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -663,7 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"SeoulLost/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;

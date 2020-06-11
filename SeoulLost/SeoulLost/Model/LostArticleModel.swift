@@ -9,27 +9,27 @@
 import UIKit
 import SwiftyJSON
 
-class LostArticleModel: NSObject {
+struct LostArticleModel:Codable {
     var position:String
     var name:String
     var getDate:String
     var place:String
     var lostID:String
     
-    override init() {
-        self.position = ""
-        self.name = ""
-        self.getDate = ""
-        self.place = ""
-        self.lostID = ""
-    }
-    
-    convenience init(item:JSON) {
-        self.init()
-        self.position = item["GET_POSITION"].stringValue
-        self.name = item["GET_NAME"].stringValue
-        self.getDate = item["GET_DATE"].stringValue
-        self.place = item["TAKE_PLACE"].stringValue
-        self.lostID = item["ID"].stringValue
-    }
+//    override init() {
+//        self.position = ""
+//        self.name = ""
+//        self.getDate = ""
+//        self.place = ""
+//        self.lostID = ""
+//    }
+//    
+//    convenience init(item:JSON) {
+//        self.init()
+//        self.position = item["GET_POSITION"].stringValue
+//        self.name = item["GET_NAME"].stringValue
+//        self.getDate = item["GET_DATE"].stringValue
+//        self.place = item["TAKE_PLACE"].stringValue
+//        self.lostID = item["ID"].stringValue
+//    }
 }
