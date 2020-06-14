@@ -9,45 +9,48 @@
 import SwiftUI
 
 struct LostItemTabView: View {
-    
-    @State private var isShowLoaidng:Bool = true {
-        didSet {
-            print("?")
-        }
-    }
+    @ObservedObject var viewModel: LostItemTabViewModel
+    @State private var isShowLoaidng:Bool = true
     
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: $isShowLoaidng) {
-                Text("hello")
+            VStack {
+                content
             }
-//            LoadingView(isShowing: $isShowLoaidng, content: {
-//
-//            })
         }
         .onAppear {
             print("LostItemTabView onAppear")
-            
         }
         .onDisappear() {
             print("LostItemTabView onDisappear")
         }
-        
-        
     }
     
-    public func viewDidLoad() -> LostItemTabView  {
-        let apiAddr = APIDefine.getLostArticleAPIAddress(startIndex: 1, endIndex: 5, type: .wallet, place: .bus, searchTxt: "지갑")
-//        print("apiAddr:\(apiAddr)")
-        
-        DataApiManager.requestGETURL(apiAddr, headers: nil, success: { (result) in
-//            print("result:\(result)")
-            usleep(2 * 1000 * 1000)
-            self.isShowLoaidng = false
-        }) { (err) in
-            print("error :\(err)")
+    private var content: some View {
+        switch self.viewModel.state {
+        case .idle:
+            print("idle")
+            return LoadingView(isShowing: $isShowLoaidng) {
+                Text("test")
+            }
+        case .loading:
+            print("loading")
+            self.viewModel.request()
+            return LoadingView(isShowing: $isShowLoaidng) {
+                Text("test")
+            }
+            
+        case .error(let error):
+            print("error")
+            return LoadingView(isShowing: $isShowLoaidng) {
+                Text("test")
+            }
+        case .loaded(let movies):
+            print("loaded")
+            return LoadingView(isShowing: $isShowLoaidng) {
+                Text("test")
+            }
         }
-        return self
     }
 
 }

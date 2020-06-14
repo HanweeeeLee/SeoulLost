@@ -15,12 +15,11 @@ struct ContentView: View {
             print("selection:\(self.selection)")
         }
     }
-    public var lostItemTabView:LostItemTabView = LostItemTabView()
+    public var lostItemTabView:LostItemTabView = LostItemTabView(viewModel: LostItemTabViewModel())
     
     var body: some View {
         TabView(selection:$selection) {
             self.lostItemTabView
-                .viewDidLoad()
                 .tabItem {
                     Image(systemName: "1.circle")
                     Text("Screen One")
