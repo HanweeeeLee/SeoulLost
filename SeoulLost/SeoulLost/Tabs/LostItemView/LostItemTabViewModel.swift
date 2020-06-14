@@ -32,6 +32,8 @@ class LostItemTabViewModel: ObservableObject {
     private let input = PassthroughSubject<Event, Never>()
     
     init() {
+        print("init!")
+        request()
     }
     
     func send(event: Event) {
@@ -45,7 +47,8 @@ class LostItemTabViewModel: ObservableObject {
             //            print("result:\(result)")
             usleep(2 * 1000 * 1000)
             print("받았다")
-            self.state = .idle
+//            self.state = .idle
+            self.send(event: .onAppear)
         }) { (err) in
             print("error :\(err)")
         }

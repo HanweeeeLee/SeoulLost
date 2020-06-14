@@ -35,7 +35,6 @@ struct LostItemTabView: View {
             }
         case .loading:
             print("loading")
-            self.viewModel.request()
             return LoadingView(isShowing: $isShowLoaidng) {
                 Text("test")
             }
@@ -52,5 +51,9 @@ struct LostItemTabView: View {
             }
         }
     }
-
+    
+    public func viewDidLoad() -> LostItemTabView  {
+        return self
+    }
+    
 }

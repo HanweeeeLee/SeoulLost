@@ -20,6 +20,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection:$selection) {
             self.lostItemTabView
+                .viewDidLoad()//이런식으로 라이프사이클?을 만들어버리면 바인딩이 안됨.. 타이밍 문제인듯
                 .tabItem {
                     Image(systemName: "1.circle")
                     Text("Screen One")
