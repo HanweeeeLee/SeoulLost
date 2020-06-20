@@ -14,8 +14,8 @@ class LostItemTabViewModel: ObservableObject {
     enum State {
         case idle
         case loading
-        case loaded([LostArticleModel])
-        case error(Error)
+        case loaded
+        case error
     }
     
     enum Event {
@@ -25,7 +25,9 @@ class LostItemTabViewModel: ObservableObject {
         case onFailedToLoadMovies(Error)
     }
     
-    @Published public var state = State.loading
+    @Published var state = State.loading
+    @Published var isShowLoading = true
+    @Published var data:Array = Array<LostArticleModel>()
     
     private var bag = Set<AnyCancellable>()
     
@@ -33,6 +35,14 @@ class LostItemTabViewModel: ObservableObject {
     
     init() {
         print("init!")
+        loadingStateCheck
+//        .receive(on: RunLoop.main)
+        .map { valid in
+          valid ? true : false
+        }
+        .assign(to: \.isShowLoading, on: self)
+//        .store(in: &cancellableSet)
+        
         request()
     }
     
@@ -40,17 +50,37 @@ class LostItemTabViewModel: ObservableObject {
         input.send(event)
     }
     
+    private var loadingStateCheck: AnyPublisher<Bool, Never> {
+        $state
+            .map { input in
+                return input == .loading
+        }
+        .eraseToAnyPublisher()
+    }
+    
     func request() {
         let apiAddr = APIDefine.getLostArticleAPIAddress(startIndex: 1, endIndex: 5, type: .wallet, place: .bus, searchTxt: nil)
         //        print("apiAddr:\(apiAddr)")
         DataApiManager.requestGETURL(apiAddr, headers: nil, success: { (result) in
-            //            print("result:\(result)")
+//            print("result:\(result)")
             usleep(2 * 1000 * 1000)
             print("받았다")
-//            self.state = .idle
-            self.send(event: .onAppear)
+            self.data.removeAll()
+            for i in 0..<result["SearchLostArticleService"]["row"].count {
+                let item = result["SearchLostArticleService"]["row"][i]
+                let model = LostArticleModel(position: item["GET_POSITION"].stringValue,
+                                             name: item["GET_NAME"].stringValue,
+                                             getDate: item["GET_DATE"].stringValue,
+                                             place: item["TAKE_PLACE"].stringValue,
+                                             lostID: item["ID"].stringValue)
+                self.data.append(model)
+            }
+            self.state = .idle
+            self.isShowLoading = false
+//            self.send(event: .onAppear)
         }) { (err) in
             print("error :\(err)")
         }
     }
+    
 }
