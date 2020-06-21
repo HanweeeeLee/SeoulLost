@@ -35,13 +35,6 @@ class LostItemTabViewModel: ObservableObject {
     
     init() {
         print("init!")
-        loadingStateCheck
-//        .receive(on: RunLoop.main)
-        .map { valid in
-          valid ? true : false
-        }
-        .assign(to: \.isShowLoading, on: self)
-//        .store(in: &cancellableSet)
         
         request()
     }
