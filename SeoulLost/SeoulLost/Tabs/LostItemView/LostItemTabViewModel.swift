@@ -33,8 +33,19 @@ class LostItemTabViewModel: ObservableObject {
     @Published var place:LostPlaceType = .bus
     @Published var lostArticleType:LostArticleType = .wallet
     
-    @Published var placeTxt:String = ""
-    @Published var lostArticleTypeTxt:String = ""
+    @Published var placeTxt:String = "" {
+        didSet {
+            self.place = LostPlaceType.getEnumFromKoreanType(korean: self.placeTxt)
+            request()
+        }
+    }
+    
+    @Published var lostArticleTypeTxt:String = "" {
+        didSet {
+            self.lostArticleType = LostArticleType.getEnumFromKoreanType(korean: self.lostArticleTypeTxt)
+            request()
+        }
+    }
     
     //MARK: propertys
     private var bag = Set<AnyCancellable>()
@@ -130,7 +141,7 @@ class LostItemTabViewModel: ObservableObject {
         let apiAddr = APIDefine.getLostArticleAPIAddress(startIndex: self.currentListIndex, endIndex: self.currentListIndex + 10, type: self.lostArticleType, place: self.place, searchTxt: nil)
         //        print("apiAddr:\(apiAddr)")
         DataApiManager.requestGETURL(apiAddr, headers: nil, success: { (result) in
-//            print("result:\(result)")
+            print("result:\(result)")
             self.currentListIndex += 10
             usleep(1 * 1000 * 1000) // 로딩을 보여주기위한 타이머 사실 쓸모없는 코드
             self.data.removeAll()

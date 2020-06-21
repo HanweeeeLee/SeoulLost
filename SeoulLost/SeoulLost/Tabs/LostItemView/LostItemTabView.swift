@@ -11,9 +11,11 @@ import SwiftUI
 struct LostItemTabView: View {
     @ObservedObject var viewModel: LostItemTabViewModel
     
-    @State var gender : String? = nil
-    @State var arrGenders = ["Male","Female","Unknown"]
-    @State var selectionIndex = 0
+    @State var lostPlacePickerSelectionIndex:Int = 0
+    @State var lostArticlePickerSelectionIndex:Int = 0
+
+    @State var lostPlaceTypeKoreanArr:Array = LostPlaceType.allEnumKoreanArray()
+    @State var lostArticleTypeKoreanArr:Array = LostArticleType.allEnumKoreanArray()
     
     var body: some View {
         NavigationView {
@@ -23,6 +25,10 @@ struct LostItemTabView: View {
         }
         .onAppear {
             print("LostItemTabView onAppear")
+            for value in LostPlaceType.allCases {
+                print(value)
+            }
+            LostArticleType.allEnumKoreanArray()
         }
         .onDisappear() {
             print("LostItemTabView onDisappear")
@@ -31,12 +37,14 @@ struct LostItemTabView: View {
     
     private var content: some View {
         return LoadingView(isShowing: self.$viewModel.isShowLoading) {
-            VStack {
-//                Text("\(self.viewModel.placeTxt)")
-//                Text("\(self.viewModel.lostArticleTypeTxt)")
-//                TextField("잃어버린 장소", text: self.$viewModel.placeTxt)
-                TextFieldWithPickerAsInputView(data: self.arrGenders, placeholder: "잃어버린 장소", selector: #selector(self.doneTapped), selectionIndex: self.$selectionIndex, text: self.$gender)
-                
+            NavigationView {
+                VStack {
+                    HStack {
+                        TextFieldWithPickerAsInputView(data: self.lostPlaceTypeKoreanArr, placeholder: "분실 장소", selectionIndex: self.$lostPlacePickerSelectionIndex, text: self.$viewModel.placeTxt)
+                        TextFieldWithPickerAsInputView(data: self.lostArticleTypeKoreanArr, placeholder: "분실 물건 타입", selectionIndex: self.$lostArticlePickerSelectionIndex, text: self.$viewModel.lostArticleTypeTxt)
+                    }
+                    
+                }
             }
         }
     }
@@ -45,20 +53,20 @@ struct LostItemTabView: View {
         return self
     }
     
-    @objc func doneTapped() {
-//        self.toolbarDelegate?.didTapDone()
-        print("test")
-    }
+//    @objc func doneTapped() {
+////        self.toolbarDelegate?.didTapDone()
+//        print("test")
+//    }
 }
 
 struct TextFieldWithPickerAsInputView : UIViewRepresentable {
     
     var data : [String]
     var placeholder : String
-    var selector:Selector
+//    var selector:Selector
     
     @Binding var selectionIndex : Int
-    @Binding var text : String?
+    @Binding var text : String
     
     private let textField = UITextField()
     private let picker = UIPickerView()
@@ -76,21 +84,21 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
         textField.inputView = picker
         textField.delegate = context.coordinator
         
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
-        toolBar.sizeToFit()
-
-        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: selector)
-//        let doneButton = UIBarButtonItem(title: <#T##String?#>, style: <#T##UIBarButtonItem.Style#>, target: <#T##Any?#>, action: <#T##Selector?#>)
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-
-        toolBar.setItems([spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-
-//        textField.inputView = picker
-        textField.inputAccessoryView = toolBar
+//        let toolBar = UIToolbar()
+//        toolBar.barStyle = UIBarStyle.default
+//        toolBar.isTranslucent = true
+//        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+//        toolBar.sizeToFit()
+//
+//        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: nil)
+////        let doneButton = UIBarButtonItem(title: <#T##String?#>, style: <#T##UIBarButtonItem.Style#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+//
+//        toolBar.setItems([spaceButton, doneButton], animated: false)
+//        toolBar.isUserInteractionEnabled = true
+//
+////        textField.inputView = picker
+//        textField.inputAccessoryView = toolBar
         
         return textField
     }
@@ -119,7 +127,7 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             self.parent.$selectionIndex.wrappedValue = row
             self.parent.text = self.parent.data[self.parent.selectionIndex]
-            //               self.parent.textField.endEditing(true)
+            self.parent.textField.endEditing(true) //기존 UIKit처럼 done버튼같은 toolbar를 붙혀서 하고싶지만 쉽지는 않을것같아서 임시로 이렇게 진행
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
             self.parent.textField.resignFirstResponder()
