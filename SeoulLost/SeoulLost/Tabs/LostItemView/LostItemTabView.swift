@@ -37,14 +37,20 @@ struct LostItemTabView: View {
     
     private var content: some View {
         return LoadingView(isShowing: self.$viewModel.isShowLoading) {
-            NavigationView {
+            ZStack {
+                Color.purple.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
                         TextFieldWithPickerAsInputView(data: self.lostPlaceTypeKoreanArr, placeholder: "분실 장소", selectionIndex: self.$lostPlacePickerSelectionIndex, text: self.$viewModel.placeTxt)
-                        TextFieldWithPickerAsInputView(data: self.lostArticleTypeKoreanArr, placeholder: "분실 물건 타입", selectionIndex: self.$lostArticlePickerSelectionIndex, text: self.$viewModel.lostArticleTypeTxt)
+//                        TextFieldWithPickerAsInputView(data: self.lostArticleTypeKoreanArr, placeholder: "분실 물건 타입", selectionIndex: self.$lostArticlePickerSelectionIndex, text: self.$viewModel.lostArticleTypeTxt)
+//                        Text("hi")
                     }
-                    
+                    Spacer()
+//                    Text("test")
+                    //                        Spacer()
+                    //                        Text("test2")
                 }
+                
             }
         }
     }
@@ -133,4 +139,19 @@ struct TextFieldWithPickerAsInputView : UIViewRepresentable {
             self.parent.textField.resignFirstResponder()
         }
     }
+}
+
+struct LostItemTabView_Previews: PreviewProvider { //화면 테스트정도의 의미
+        static var previews: some View {
+            Group {
+                LostItemTabView(viewModel: LostItemTabViewModel())
+                .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
+                    .previewDisplayName("iPhone SE")
+                    .environment(\.colorScheme, .dark)
+                
+                LostItemTabView(viewModel: LostItemTabViewModel())
+                .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
+                    .previewDisplayName("iPhone 11")
+            }
+        }
 }

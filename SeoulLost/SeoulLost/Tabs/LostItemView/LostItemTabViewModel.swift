@@ -143,7 +143,7 @@ class LostItemTabViewModel: ObservableObject {
         DataApiManager.requestGETURL(apiAddr, headers: nil, success: { (result) in
             print("result:\(result)")
             self.currentListIndex += 10
-            usleep(1 * 1000 * 1000) // 로딩을 보여주기위한 타이머 사실 쓸모없는 코드
+//            usleep(1 * 1000 * 1000) // 로딩을 보여주기위한 타이머 사실 쓸모없는 코드
             self.data.removeAll()
             for i in 0..<result["SearchLostArticleService"]["row"].count {
                 let item = result["SearchLostArticleService"]["row"][i]
