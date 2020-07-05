@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LostItemTabView: View {
+    @State var presentingModal = false
     @ObservedObject var viewModel: LostItemTabViewModel
     
     @State var lostPlacePickerSelectionIndex:Int = 0
@@ -21,6 +22,8 @@ struct LostItemTabView: View {
         NavigationView {
             VStack {
                 content
+                Button("Present") { self.presentingModal = true }
+                .sheet(isPresented: $presentingModal) { LostItemLocationPickerView(presentedAsModal: self.$presentingModal) }
             }
         }
         .onAppear {
@@ -38,17 +41,17 @@ struct LostItemTabView: View {
     private var content: some View {
         return LoadingView(isShowing: self.$viewModel.isShowLoading) {
             ZStack {
-                Color.purple.edgesIgnoringSafeArea(.all)
+//                Color.purple.edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
-                        TextFieldWithPickerAsInputView(data: self.lostPlaceTypeKoreanArr, placeholder: "분실 장소", selectionIndex: self.$lostPlacePickerSelectionIndex, text: self.$viewModel.placeTxt)
+//                        TextFieldWithPickerAsInputView(data: self.lostPlaceTypeKoreanArr, placeholder: "분실 장소", selectionIndex: self.$lostPlacePickerSelectionIndex, text: self.$viewModel.placeTxt)
 //                        TextFieldWithPickerAsInputView(data: self.lostArticleTypeKoreanArr, placeholder: "분실 물건 타입", selectionIndex: self.$lostArticlePickerSelectionIndex, text: self.$viewModel.lostArticleTypeTxt)
-//                        Text("hi")
+                        Text("hi")
                     }
                     Spacer()
-//                    Text("test")
-                    //                        Spacer()
-                    //                        Text("test2")
+                    Text("test")
+                                            Spacer()
+                                            Text("test2")
                 }
                 
             }

@@ -20,6 +20,8 @@
 		78A14617248CBBB5002482BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78A14615248CBBB5002482BB /* LaunchScreen.storyboard */; };
 		78A14622248CBBB6002482BB /* SeoulLostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A14621248CBBB6002482BB /* SeoulLostTests.swift */; };
 		78A1462D248CBBB6002482BB /* SeoulLostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A1462C248CBBB6002482BB /* SeoulLostUITests.swift */; };
+		78C12DF224B1C20D004348B7 /* LostItemLocationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C12DF124B1C20D004348B7 /* LostItemLocationPickerView.swift */; };
+		78C12DF424B1C2BA004348B7 /* LostItemLocationPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C12DF324B1C2BA004348B7 /* LostItemLocationPickerViewModel.swift */; };
 		78D3CFF7248CC2CB00822088 /* DataApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFF3248CC2CA00822088 /* DataApiManager.swift */; };
 		78D3CFF9248CCF4200822088 /* CommonDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFF8248CCF4200822088 /* CommonDefine.swift */; };
 		78D3CFFB248CD0A400822088 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D3CFFA248CD0A400822088 /* APIDefine.swift */; };
@@ -68,6 +70,8 @@
 		78A14628248CBBB6002482BB /* SeoulLostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SeoulLostUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A1462C248CBBB6002482BB /* SeoulLostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulLostUITests.swift; sourceTree = "<group>"; };
 		78A1462E248CBBB6002482BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78C12DF124B1C20D004348B7 /* LostItemLocationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostItemLocationPickerView.swift; sourceTree = "<group>"; };
+		78C12DF324B1C2BA004348B7 /* LostItemLocationPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostItemLocationPickerViewModel.swift; sourceTree = "<group>"; };
 		78D3CFF3248CC2CA00822088 /* DataApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataApiManager.swift; sourceTree = "<group>"; };
 		78D3CFF8248CCF4200822088 /* CommonDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDefine.swift; sourceTree = "<group>"; };
 		78D3CFFA248CD0A400822088 /* APIDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			children = (
 				4F0731E62491F4B400E28CA7 /* LostItemTabView.swift */,
 				7819DA8F2494BF7300F8897C /* LostItemTabViewModel.swift */,
+				78C12DF124B1C20D004348B7 /* LostItemLocationPickerView.swift */,
+				78C12DF324B1C2BA004348B7 /* LostItemLocationPickerViewModel.swift */,
 			);
 			path = LostItemView;
 			sourceTree = "<group>";
@@ -519,7 +525,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78C12DF224B1C20D004348B7 /* LostItemLocationPickerView.swift in Sources */,
 				78D3CFFD248CDD5200822088 /* LostArticleModel.swift in Sources */,
+				78C12DF424B1C2BA004348B7 /* LostItemLocationPickerViewModel.swift in Sources */,
 				4F0731E72491F4B400E28CA7 /* LostItemTabView.swift in Sources */,
 				78A1460B248CBBB1002482BB /* AppDelegate.swift in Sources */,
 				4F0731EF2491F68100E28CA7 /* LoadingView.swift in Sources */,
